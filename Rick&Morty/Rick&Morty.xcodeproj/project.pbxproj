@@ -36,6 +36,7 @@
 		1BC6DEE3299BA3EF009B9DA1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC6DEE2299BA3EF009B9DA1 /* Extensions.swift */; };
 		1BC6DEE5299C43A2009B9DA1 /* RMCharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC6DEE4299C43A2009B9DA1 /* RMCharacterCollectionViewCell.swift */; };
 		1BC6DEE7299D1511009B9DA1 /* RMCharacterCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BC6DEE6299D1511009B9DA1 /* RMCharacterCollectionViewCellModel.swift */; };
+		1BFAA07629A92FF000C1C76F /* RMImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BFAA07529A92FF000C1C76F /* RMImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		1BC6DEE2299BA3EF009B9DA1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1BC6DEE4299C43A2009B9DA1 /* RMCharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 		1BC6DEE6299D1511009B9DA1 /* RMCharacterCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterCollectionViewCellModel.swift; sourceTree = "<group>"; };
+		1BFAA07529A92FF000C1C76F /* RMImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 		1B5AC7532996695E00F6F611 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				1BFAA07529A92FF000C1C76F /* RMImageLoader.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				1B5AC73B2996639700F6F611 /* AppDelegate.swift in Sources */,
 				1BC6DEE5299C43A2009B9DA1 /* RMCharacterCollectionViewCell.swift in Sources */,
 				1B5AC76129966C1F00F6F611 /* RMEpisodeViewController.swift in Sources */,
+				1BFAA07629A92FF000C1C76F /* RMImageLoader.swift in Sources */,
 				1B5AC73D2996639700F6F611 /* SceneDelegate.swift in Sources */,
 				1B5AC75F29966BFE00F6F611 /* RMLocationsViewController.swift in Sources */,
 				1B5AC7632996BB5500F6F611 /* RMSettingsViewController.swift in Sources */,

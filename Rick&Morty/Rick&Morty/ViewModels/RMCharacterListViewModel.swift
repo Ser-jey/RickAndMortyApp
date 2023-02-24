@@ -65,7 +65,6 @@ final class RMCharacterListViewModel: NSObject {
         // Fetch characters
         guard !isLoadingMoreCharacters else { return }
         isLoadingMoreCharacters = true
-        print(url)
         guard let request = RMRequest(url: url) else { return }
         print("Should start fetching more")
         RMService.shared.execute(
@@ -80,7 +79,6 @@ final class RMCharacterListViewModel: NSObject {
                 let moreResults = responseModel.results
                 let info = responseModel.info
                 strongSelf.apiInfo = info
-                print(moreResults[0].name)
                 let originalCount = strongSelf.characters.count
                 let newCount = moreResults.count
                 let totalCount = originalCount + newCount
@@ -88,7 +86,6 @@ final class RMCharacterListViewModel: NSObject {
                 let indexPathsToAdd: [IndexPath] = Array(startingIndex..<(startingIndex + newCount)).compactMap({
                     return IndexPath(row: $0, section: 0)
                 })
-                print(indexPathsToAdd)
                 strongSelf.characters.append(contentsOf: moreResults)
                 DispatchQueue.main.async {
                     strongSelf.delegate?.didLoadMoreCharacters(with: indexPathsToAdd)
