@@ -17,11 +17,10 @@ final class RMImageLoader {
     /// Get image content with URL
     /// - Parameters:
     ///   - url: Source url
-    ///   - completion: callback 
+    ///   - completion: callback
     func downloadImage(_ url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
         let key = url.absoluteString as NSString
         if let data = self.cacheImageData.object(forKey: key) {
-            print("Cache image")
             completion(.success(data as Data))
             return
         }
@@ -31,10 +30,9 @@ final class RMImageLoader {
                 completion(.failure(error ?? URLError(.badServerResponse)))
                 return
             }
-            let value = data as NSData
-            self?.cacheImageData.setObject(value, forKey: key)
-            print("Download Image")
-            completion(.success(data))
+        let value = data as NSData
+        self?.cacheImageData.setObject(value, forKey: key)
+        completion(.success(data))
             
         }
         task.resume()
