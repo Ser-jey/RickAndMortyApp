@@ -32,6 +32,7 @@ final class RMCharacterDetailView: UIView {
         self.collectionView = collectionView
         addSubviews(collectionView, spinner)
         addConstraints()
+      
     }
     
     required init?(coder: NSCoder) {
@@ -64,7 +65,9 @@ final class RMCharacterDetailView: UIView {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout )
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(RMCharacterPhotoCollectionViewCell.self, forCellWithReuseIdentifier: RMCharacterPhotoCollectionViewCell.cellIdentier)
+        collectionView.register(RMCharacterInfoCollectionViewCell.self, forCellWithReuseIdentifier: RMCharacterInfoCollectionViewCell.cellIdentier)
+        collectionView.register(RMCharacterEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: RMCharacterEpisodeCollectionViewCell.cellIdentier)
         
         return collectionView
         
