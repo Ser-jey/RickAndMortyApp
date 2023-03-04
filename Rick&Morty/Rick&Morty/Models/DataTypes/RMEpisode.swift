@@ -8,7 +8,8 @@
 import Foundation
 
     // MARK: - Result
-    struct RMEpisodes: Codable {
+struct RMEpisodes: Codable, RMEpisodeDataRender {
+    
         let id: Int
         let name, airDate, episode: String
         let characters: [String]
