@@ -54,7 +54,8 @@ final class RMCharacterListViewModel: NSObject {
                     self?.delegate?.didLoadInitialCharacters()
                 }
             case .failure(let error):
-                print(error)
+                break
+                
             }
         }
     }
@@ -66,7 +67,6 @@ final class RMCharacterListViewModel: NSObject {
         guard !isLoadingMoreCharacters else { return }
         isLoadingMoreCharacters = true
         guard let request = RMRequest(url: url) else { return }
-        print("Should start fetching more")
         RMService.shared.execute(
                 request,
                 expecning: RMGetAllCharactersResponse.self) { [weak self] result in
@@ -92,7 +92,8 @@ final class RMCharacterListViewModel: NSObject {
                     strongSelf.isLoadingMoreCharacters = false
                 }
             case .failure(let failure):
-                print(String(describing: failure))
+                break
+                
             }
         }
     }

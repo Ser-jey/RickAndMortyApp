@@ -39,7 +39,7 @@ final class RMCharacterInfoCollectionViewCell: UICollectionViewCell {
     private let titleContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .tertiarySystemBackground
+        view.backgroundColor = .secondarySystemBackground
         return view
         
     }()
@@ -48,11 +48,11 @@ final class RMCharacterInfoCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .tertiarySystemBackground
         contentView.addSubviews(titleContainerView, valueLabel, iconImageView)
         contentView.layer.masksToBounds = true
         titleContainerView.addSubview(titleLabel)
         setUpConstraints()
-        contentView.backgroundColor = .secondarySystemBackground
         contentView.layer.cornerRadius = 10
     }
     

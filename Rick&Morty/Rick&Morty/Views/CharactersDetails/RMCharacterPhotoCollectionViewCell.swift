@@ -51,7 +51,8 @@ final class RMCharacterPhotoCollectionViewCell: UICollectionViewCell {
                     self?.imageView.image = image
                 }
             case .failure(let failure):
-                print(failure.localizedDescription)
+                break
+                
             }
         }
     }

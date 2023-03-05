@@ -15,7 +15,8 @@ protocol RMEpisodeDataRender {
 
 final class RMCharacterEpisodeCollectionViewCellViewModel {
     private let episodesURL: URL?
-    private var isFetching = false
+    private var isFetching = false // это переменная нужна для оптимизации загрузки данных из-за особенностей работы CollectionView
+
     private var dataBlock: ((RMEpisodeDataRender)->Void)?
     
     private var episode: RMEpisodes? {
@@ -38,7 +39,6 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
     }
     
     public func fetchEpisodes() {
-        // это переменная нужна для оптимизации загрузки данных из-за особенностей работы CollectionView
         guard !isFetching else {
             if let model = episode {
                 dataBlock?(model)
@@ -58,7 +58,7 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
                     self?.episode = model
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                break
             }
         }
     }

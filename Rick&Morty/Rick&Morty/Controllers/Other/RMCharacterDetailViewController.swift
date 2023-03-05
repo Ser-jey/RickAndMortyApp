@@ -98,6 +98,19 @@ extension RMCharacterDetailViewController: UICollectionViewDataSource, UICollect
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let sectoionType = viewModel.sections[indexPath.section]
+        
+        switch sectoionType {
+        case .photo, .information:
+            break
+        case .episodes:
+            let episode = viewModel.episodes[indexPath.row]
+            let vc = RMEpisodeDetailViewController(url: URL(string: episode))
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     
     
     
