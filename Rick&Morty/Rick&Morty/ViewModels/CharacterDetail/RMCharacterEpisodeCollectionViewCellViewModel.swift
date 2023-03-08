@@ -5,7 +5,7 @@
 //  Created by Сергей Кривошеев on 28.02.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol RMEpisodeDataRender {
     var name: String { get }
@@ -13,13 +13,16 @@ protocol RMEpisodeDataRender {
     var episode: String { get }
 }
 
-final class RMCharacterEpisodeCollectionViewCellViewModel {
+final class RMCharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {
+
     private let episodesURL: URL?
     private var isFetching = false // это переменная нужна для оптимизации загрузки данных из-за особенностей работы CollectionView
 
     private var dataBlock: ((RMEpisodeDataRender)->Void)?
     
-    private var episode: RMEpisodes? {
+    public let borderColor: UIColor
+    
+    private var episode: RMEpisode? {
         didSet {
             guard let model = episode else {
                 return
@@ -30,8 +33,9 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
     
     // MARK: - Init
     
-    init(episodeURL: URL?) {
+    init(episodeURL: URL?, borderColor: UIColor = .systemBlue) {
         self.episodesURL = episodeURL
+        self.borderColor = borderColor
     }
     
     public func registerForData(block: @escaping(RMEpisodeDataRender) -> Void) {
@@ -50,7 +54,7 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
       
         isFetching = true
         
-        RMService.shared.execute(request, expecning: RMEpisodes.self) { [weak self] result in
+        RMService.shared.execute(request, expecning: RMEpisode.self) { [weak self] result in
             switch result {
                 
             case .success(let model):
@@ -62,4 +66,15 @@ final class RMCharacterEpisodeCollectionViewCellViewModel {
             }
         }
     }
+    // MARK: - Hashable
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.episodesURL?.absoluteString ?? "")
+    }
+    
+    static func == (lhs: RMCharacterEpisodeCollectionViewCellViewModel, rhs: RMCharacterEpisodeCollectionViewCellViewModel) -> Bool {
+        lhs.hashValue == rhs.hashValue
+    }
+    
+    
 }

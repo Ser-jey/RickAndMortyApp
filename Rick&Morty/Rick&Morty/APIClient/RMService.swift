@@ -35,7 +35,6 @@ final class RMService {
         if let cachedData = cacheManager.cachedResponse(for: request.endpoint, url: request.url) {
             do {
                 let data = try JSONDecoder().decode(type.self, from: cachedData)
-                print("Using cached API Response")
                 completion(.success(data))
             }
             catch {
@@ -61,7 +60,6 @@ final class RMService {
             
                 let result = try JSONDecoder().decode(type.self, from: data)
                 self?.cacheManager.setCache(for: request.endpoint, url: request.url, data: data)
-                print("Save data to API Cache")
                 completion(.success(result))
             } catch {
                 completion(.failure(RMServiceError.failedToDecodeData))

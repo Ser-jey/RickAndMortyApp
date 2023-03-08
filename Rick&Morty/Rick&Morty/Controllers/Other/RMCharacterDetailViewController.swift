@@ -38,6 +38,11 @@ final class RMCharacterDetailViewController: UIViewController {
         detailView.collectionView?.dataSource = self
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+      //  self.hidesBottomBarWhenPushed = false
+    }
+    
     @objc
     private func didTapShare() {
         // some code
