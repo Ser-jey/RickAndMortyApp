@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailViewViewModelDelegate {
+final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailViewViewModelDelegate, RMEpisodeDetailViewDelegate {
 
     private let viewModel: RMEpisodeDetailViewViewModel
     
@@ -19,6 +19,7 @@ final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailView
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         view.addSubview(detailView)
+        detailView.delegate = self
         addConstraints()
         viewModel.delegate = self
         viewModel.fetchEpisodeData()
@@ -52,6 +53,17 @@ final class RMEpisodeDetailViewController: UIViewController, RMEpisodeDetailView
     }
     
     // MARK: - Delegate
+    
+    func rmEpisodeDetailView(_ datailView: RMEpisodeDetailView, didSelect character: RMCharacter) {
+        print(character.name)
+        let viewModel = RMCharacterDetailViewModel(character: character)
+        let vc = RMCharacterDetailViewController(viewModel: viewModel)
+        vc.navigationItem.title = character.name
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    // MARK: - Delegate ViewModel
     
     func didFetchEpisodeDetails() {
         detailView.configure(viewModel: viewModel)
