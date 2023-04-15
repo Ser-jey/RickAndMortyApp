@@ -62,7 +62,7 @@ final class RMCharacterEpisodeCollectionViewCellViewModel: Hashable, Equatable {
                     self?.episode = model
                 }
             case .failure(let error):
-                break
+               print(error)
             }
         }
     }

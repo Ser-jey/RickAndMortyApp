@@ -160,7 +160,7 @@ extension RMEpisodeDetailView {
         }
     }
     
-    private func createInfoLayout() -> NSCollectionLayoutSection{
+    private func createInfoLayout() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         
         item.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10)

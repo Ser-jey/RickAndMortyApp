@@ -8,7 +8,8 @@
 import UIKit
 
 /// Controller to show and search Locations
-final class RMLocationsViewController: UIViewController {
+final class RMLocationsViewController: UIViewController{
+   
 
     private let primaryView = RMLocationView()
     
@@ -20,6 +21,8 @@ final class RMLocationsViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Locations"
         addConstraints()
+        viewModel.delegate = self
+        viewModel.fetchLocations()
     }
 
     private func addConstraints() {
@@ -31,4 +34,13 @@ final class RMLocationsViewController: UIViewController {
         ])
     }
 
+}
+    
+// MARK: - LocationViewModel Delegate
+extension RMLocationsViewController: RMLocationViewModelDelegate {
+    
+    func didFetchInitialLocations() {
+        primaryView.configure(with: viewModel)
+    }
+    
 }
